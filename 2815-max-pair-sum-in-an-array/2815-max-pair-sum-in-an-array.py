@@ -1,26 +1,25 @@
 class Solution:
     def maxSum(self, nums: List[int]) -> int:
         obj = {}
+
         for i in nums:
-            val = [int(j) for j in str(i)]    
-            max_val = max(val)
-            if max_val in obj:
-                obj[max_val].append(i)
+            val = max([int(j) for j in str(i)])
+            if val in obj:
+                obj[val].append(i)
             else:
-                obj[max_val] = [i]
-            
-        pairs_sum = []
-        for i in obj:
-            if len(obj[i])>1:
-                val = obj[i]
-                val.sort()
-                pairs_sum.append(val[-1]+val[-2])
+                obj[val] = [i]
         
-        if not pairs_sum:
+        pair_sums = []
+
+        for i,j in obj.items():
+            if not len(j)>1:
+                continue
+            j.sort()
+            pair_sums.append(j[-1]+j[-2])
+    
+        if not pair_sums:
             return -1
-        else:
-            return max(pairs_sum)
-
-
-        
+        return max(pair_sums)
             
+
+    
