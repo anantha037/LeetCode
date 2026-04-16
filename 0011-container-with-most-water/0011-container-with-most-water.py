@@ -11,9 +11,6 @@ class Solution:
 
             if height[i]<height[j]:
                 i+=1
-            elif height[j]<height[i]:
-                j-=1
             else:
-                i+=1
                 j-=1
         return res
