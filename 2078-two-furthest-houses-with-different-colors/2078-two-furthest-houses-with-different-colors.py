@@ -11,13 +11,3 @@ class Solution:
             i+=1
 
         return res
-
-
-
-
-        # diff = 0
-        # for i in range(len(colors)):
-        #     for j in range(i+1,len(colors)):
-        #         if colors[i]!=colors[j] and diff<abs(i-j):
-        #             diff=abs(i-j)
-        # return diff
