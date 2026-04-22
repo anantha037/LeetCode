@@ -1,19 +1,22 @@
+import numpy as np
+
 class Solution:
     def twoEditWords(self, queries: List[str], dictionary: List[str]) -> List[str]:
-        n = len(queries[0])
+        obj = {}
         res = []
-        for i in range(len(queries)):
-            word = queries[i]
-            for j in range(len(dictionary)):
-                check = dictionary[j]
-                diff = 0
-                for a,b in zip(word, check):
-                    if diff>2:
+        for word in dictionary:
+            obj[word] = np.array(list(word))
+        
+        for word in queries:
+            if word in obj:
+                res.append(word)
+            else:
+                for arr in obj.values():
+                    arr2 = np.array(list(word))
+                    if np.sum(arr2 != arr) > 2:
+                        continue
+                    else:
+                        res.append(word)
                         break
-                    if a!=b:
-                        diff +=1
-                if diff<=2:
-                    res.append(word)
-                    break
-    
+
         return res
