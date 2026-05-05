@@ -37,32 +37,3 @@ class Solution:
         return head
 
         
-        
-        # if k==n:
-        #     return head
-        # elif k>n:
-        #     target = n - (k%n)
-        # else:
-        #     target = n-k
-
-        # temp = head
-        # count = 1
-
-        # while count < target:
-        #     temp = temp.next
-        #     count +=1
-        
-        # if not temp or not temp.next:
-        #     return head
-        
-        # first = temp.next
-
-        # while first.next:
-        #     first = first.next
- 
-        # first.next = head
-        # head = temp.next
-        # temp.next = None
-
-        
-        # return head
