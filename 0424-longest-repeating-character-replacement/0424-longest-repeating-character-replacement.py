@@ -1,40 +1,19 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        
-        words = {}
 
-        for i in range(len(s)):
-            word = s[i]
-            if word in words:
-                words[word][i] = 1
-            else:
-                words[word] = [0]*len(s)
-                words[word][i] = 1
+        count = {}
 
         res = 0
+        l = 0
+        maxfreq = 0
+        for r in range(len(s)):
+            count[s[r]] = count.get(s[r], 0) + 1
 
-        temp = k
-            
-        for word in words:
+            maxfreq = max(maxfreq, count[s[r]])
 
-            q = []
-            start = 0
-            first = 0
-            
-            for i in range(len(words[word])):
-                if words[word][i] == 1:
-                    res = max(res,i+1-first)
-                    continue
-                else:
-                    k-=1
-                    q.append(i)
-                    res = max(res, i-first)
-                    if k<0:
-                        k+=1
-                        first = q.pop(0) + 1
-            
-            if k>=0:
-                res = max(res,i+1-first)
+            while (r-l+1) - maxfreq > k:
+                count[s[l]] -=1
+                l+=1
+            res = max(res, r-l+1)
 
-            k = temp
         return res
