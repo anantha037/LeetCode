@@ -3,5 +3,9 @@ class Solution:
         answer = []
 
         for i in nums:
-            answer.extend(int(j) for j in str(i))
+            if i>9:
+                for j in str(i):
+                    answer.append(int(j))
+            else:
+                answer.append(i)
         return answer
