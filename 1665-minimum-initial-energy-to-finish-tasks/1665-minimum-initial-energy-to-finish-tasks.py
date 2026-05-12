@@ -1,6 +1,5 @@
 class Solution:
     def minimumEffort(self, tasks: List[List[int]]) -> int:
-        total = 0
         
         sorted_data = sorted(tasks, key=lambda x: abs(x[0] - x[1]),reverse=True)
         
