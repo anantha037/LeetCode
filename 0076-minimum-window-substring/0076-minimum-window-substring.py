@@ -3,52 +3,39 @@ class Solution:
         if len(t) > len(s) or t=="":
             return ""
 
-        answer = ""
+        context, window = {},{}
 
-        n1 = len(t)
-        n2 = len(s)
+        for c in t:
+            context[c] = context.get(c, 0) +1
 
-        freq1 ={}
-        freq2 = {}
+        matches, current = len(context), 0
 
-        for char in t:
-            freq1[char] = freq1.get(char,0) + 1
-            freq2[char] = 0
-
-        matches = 0
-
+        res, resLen = [-1,-1], float('inf')
         l = 0
-        r = 0
 
-        while l<n2 and r<n2:
-            char = s[r]
-            
-            if char in freq1:
-                freq2[char] +=1
-                if freq2[char] <= freq1[char]:
-                    matches += 1
-            else:
-                freq2[char] = freq2.get(char,0) + 1
+        for r in range(len(s)):
+            c = s[r]
 
-            while matches == n1 and l<=r:
+            window[c] = window.get(c, 0) + 1
 
-                current = len(s[l:r+1])
+            if c in context and window[c] == context[c]:
+                current += 1
 
-                if not answer:        
-                    answer = s[l:r+1]
-                elif current<len(answer):
-                    answer = s[l:r+1]
+            while current == matches:
+                if resLen > (r-l+1):
+                    res = [l,r]
+                    resLen = (r-l+1)
 
-                freq2[s[l]] -= 1
-                if s[l] in freq1:
-                    if freq2[s[l]] < freq1[s[l]]:
-                        matches -= 1
-                    
-                l +=1
-            
-            r+=1
+                window[s[l]] -= 1
+
+                if s[l] in context and window[s[l]] < context[s[l]]:
+                    current -=1
+                
+                l+=1
         
-        return answer
+        l,r = res
+
+        return s[l:r+1] if resLen != float('inf') else ""
 
 
                 
