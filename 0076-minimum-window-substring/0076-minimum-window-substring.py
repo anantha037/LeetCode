@@ -1,6 +1,6 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        if len(t) > len(s):
+        if len(t) > len(s) or t=="":
             return ""
 
         answer = ""
@@ -29,13 +29,12 @@ class Solution:
                     matches += 1
             else:
                 freq2[char] = freq2.get(char,0) + 1
-            # print(l,r,char,matches)
+
             while matches == n1 and l<=r:
 
                 current = len(s[l:r+1])
 
-                if not answer:
-                    
+                if not answer:        
                     answer = s[l:r+1]
                 elif current<len(answer):
                     answer = s[l:r+1]
