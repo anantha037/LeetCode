@@ -7,7 +7,7 @@ class Solution:
 
 
         for i in nums:
-            check = 1
+            check = i//2
             while check < i:
                 if check | check +1 == i:
                     ans.append(check)
