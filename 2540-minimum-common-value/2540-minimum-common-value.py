@@ -12,19 +12,3 @@ class Solution:
                 return nums1[i]
 
         return -1
-
-
-
-
-
-
-
-
-
-        # nums1  = set(nums1)
-        # nums2 = set(nums2)
-        
-        # for i in sorted(nums1):
-        #     if i in nums2:
-        #         return i
-        # return -1
