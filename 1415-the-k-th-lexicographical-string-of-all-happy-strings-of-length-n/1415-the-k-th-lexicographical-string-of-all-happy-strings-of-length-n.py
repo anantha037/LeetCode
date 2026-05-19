@@ -11,14 +11,10 @@ class Solution:
                 return
             for i in 'abc':
                 if not current or current[-1] != i:
-
-                    current+=i
-
-                    backtrack(n,current)
-
-                    current = current[:-1]
+                    
+                    backtrack(n,current+i)
+                    
             
-        
         backtrack(n,"")
 
         happy_strings = sorted(happy_strings)
