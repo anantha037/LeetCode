@@ -2,19 +2,17 @@ class Solution:
     def getHappyString(self, n: int, k: int) -> str:
 
         happy_strings = set()
-        letters = 'abc'
 
         def backtrack(n,current):
-            if len(happy_strings)==k:
+            if len(happy_strings)>=k:
                 return
             if len(current)==n:
                 happy_strings.add(current)
                 return
-            for i in range(max(n,3)):
-                val = letters[i%3]
-                if not current or current[-1] != val:
+            for i in 'abc':
+                if not current or current[-1] != i:
 
-                    current+=val
+                    current+=i
 
                     backtrack(n,current)
 
