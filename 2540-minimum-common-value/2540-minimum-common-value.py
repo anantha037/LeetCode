@@ -6,11 +6,11 @@ class Solution:
         m = len(nums2)
 
         while i<n and j<m:
-            if nums1[i]>nums2[j]:
-                j+=1
+            if nums1[i]==nums2[j]:
+                return nums1[i]
             elif nums1[i]<nums2[j]:
                 i+=1
             else:
-                return nums1[i]
-
+                j+=1
+                
         return -1
