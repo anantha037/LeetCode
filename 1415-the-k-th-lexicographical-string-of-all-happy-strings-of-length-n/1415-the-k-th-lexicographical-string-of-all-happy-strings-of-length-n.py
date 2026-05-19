@@ -23,15 +23,9 @@ class Solution:
         
         backtrack(n,"")
 
-        # if len(happy_strings)<k:
-        #     return ""
-
-        # print(len(happy_strings))
         happy_strings = sorted(happy_strings)
-        # print(len(happy_strings),k,k-1,happy_strings[-1])
         
         return "" if k>len(happy_strings) else happy_strings[k-1]
-        # return happy_string
 
 
             
