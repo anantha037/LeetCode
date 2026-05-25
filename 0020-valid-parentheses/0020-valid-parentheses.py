@@ -18,4 +18,4 @@ class Solution:
                 else:
                     return False
         
-        return True if not stack else False
+        return not stack
