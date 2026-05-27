@@ -1,22 +1,13 @@
 class Solution:
     def greatestLetter(self, s: str) -> str:
-        res = ""
+        s = set(s)
+        if len(s)==1:
+            return ''
         
-        if len(set(s))==1:
-            return res
-        
-        checked = set()
 
-        for c in s:
-            if c.islower():
-                if c.upper() in checked and res<c.upper():
-                    res = c.upper()
-                else:
-                    checked.add(c)
-            else:
-                if c.lower() in checked and res<c:
-                    res = c
-                else:
-                    checked.add(c)
-        return res
+        for i in range(90,64,-1):
+            if chr(i) in s and chr(i+32) in s:
+                return chr(i)
+
+        return ''
 
