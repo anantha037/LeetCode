@@ -12,6 +12,7 @@ class Solution:
             else:
                 val = ord(word[i])-65
                 upper[val] = min(i, upper[val])
+
         
         count = 0
 
