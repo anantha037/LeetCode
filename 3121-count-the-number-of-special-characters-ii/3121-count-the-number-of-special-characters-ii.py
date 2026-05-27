@@ -2,28 +2,22 @@ class Solution:
     def numberOfSpecialChars(self, word: str) -> int:
         count = 0
 
-        checked = {}
+        upper = [float('inf')]*26
+        lower = [-1]*26
 
         for i in range(len(word)):
             if word[i].islower():
-                c = word[i]
-                if c in checked:
-                    checked[c] = [i, checked[c][1]]
-                else:
-                    checked[c] = [i,float('inf')]
+                val = ord(word[i])-97
+                lower[val] = i
             else:
-                c = word[i].lower()
-                if c in checked:
-                    checked[c] = [checked[c][0],min(i, checked[c][1])]
-                else:
-                    checked[c] = [-1,i]
+                val = ord(word[i])-65
+                upper[val] = min(i, upper[val])
         
         count = 0
 
-        for c in checked:
-            val = checked[c]
-            if val[0] == -1 or val[1] == float('inf'):
+        for i in range(26):
+            if lower[i] == -1 or upper[i] == float('inf'):
                 continue
-            elif val[0] < val[1]:
+            elif upper[i]>lower[i]:
                 count +=1
         return count
