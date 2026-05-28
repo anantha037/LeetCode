@@ -16,6 +16,6 @@ class Solution:
 
 
         backtrack(0,0,'')
-        print(res)
+
         return list(set(res))
 
