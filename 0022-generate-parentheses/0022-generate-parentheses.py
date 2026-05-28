@@ -17,5 +17,5 @@ class Solution:
 
         backtrack(0,0,'')
 
-        return list(set(res))
+        return res
 
