@@ -5,7 +5,6 @@ class Solution:
         stack = []
 
         def backtrack(first,last):
-            print(first,last,stack)
             if first==last==n:
                 res.append("".join(stack))
                 return
