@@ -2,27 +2,20 @@ class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         res = []
 
-        stack = []
 
-        def backtrack(first,last):
+        def backtrack(first,last,s):
             if first==last==n:
-                res.append("".join(stack))
+                res.append(s)
                 return
             if first<n:
-                stack.append('(')
-                first+=1
-                backtrack(first,last)
-                stack.pop()
-                first-=1
-            if last<first and stack:
-                stack.append(')')
-                last+=1
-                backtrack(first,last)
-                stack.pop()
-                last-=1
+                backtrack(first+1,last,s+'(')
+
+            if last<first:
+                backtrack(first,last+1,s+')')
+        
 
 
-        backtrack(0,0)
+        backtrack(0,0,'')
         print(res)
         return list(set(res))
 
