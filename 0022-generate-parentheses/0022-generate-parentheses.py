@@ -12,10 +12,7 @@ class Solution:
 
             if last<first:
                 backtrack(first,last+1,s+')')
-        
-
 
         backtrack(0,0,'')
-
         return res
 
