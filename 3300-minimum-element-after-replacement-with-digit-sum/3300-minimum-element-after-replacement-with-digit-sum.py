@@ -1,15 +1,15 @@
 class Solution:
     def minElement(self, nums: List[int]) -> int:
         res = float('inf')
-        for i in range(len(nums)):
-            if len(str(nums[i]))>1:
-                val = 0
-                while nums[i]>0:
-                    val+=nums[i]%10
-                    nums[i]=nums[i]//10
-                nums[i]=val
-            
-            if nums[i]<res:
-                res = nums[i]
+
+        for n in nums:
+            if n>9:
+                curr = 0
+                while n:
+                    curr += n%10
+                    n //= 10
+                n = curr
+                
+            res = min(res,int(n))         
                 
         return res
