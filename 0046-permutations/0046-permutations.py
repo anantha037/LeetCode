@@ -2,15 +2,13 @@ class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         answer = []
 
-        def backtrack(num):
+        def backtrack(num,remaining):
             if len(num)==len(nums):
                 answer.append(num)
                 return
             
-            for i in nums:
-                if num and i in set(num):
-                    continue
-                backtrack(num+[i])
+            for i in range(len(remaining)):
+                backtrack(num+[remaining[i]],remaining[:i]+remaining[i+1:])
 
-        backtrack([])
+        backtrack([],nums)
         return answer
