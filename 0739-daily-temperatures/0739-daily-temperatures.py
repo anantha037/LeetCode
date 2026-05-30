@@ -3,8 +3,9 @@ class Solution:
         
         answer = [0]*len(temperatures)
         stack = []
+        n=len(temperatures)
 
-        for i in range(len(temperatures)-1,-1,-1):
+        for i in range(n-1,-1,-1):
             while stack and temperatures[i]>=temperatures[stack[-1]]:
                 stack.pop()
             
