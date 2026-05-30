@@ -3,9 +3,8 @@ class Solution:
 
         answer = [0]*len(prices)
         mono_stack = []
-        n = len(prices)-1
 
-        for i in range(n,-1,-1):
+        for i in range(len(prices)-1,-1,-1):
             while mono_stack and prices[i] < mono_stack[-1]:
                 mono_stack.pop()
 
