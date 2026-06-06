@@ -3,8 +3,8 @@ class Solution:
         res = []
         left_sum = 0
         right_sum = sum(nums)
-        for i in range(len(nums)):
-            right_sum-=nums[i]
+        for num in nums:
+            right_sum-=num
             res.append(abs(left_sum-right_sum))
-            left_sum+=nums[i]
+            left_sum+=num
         return res
