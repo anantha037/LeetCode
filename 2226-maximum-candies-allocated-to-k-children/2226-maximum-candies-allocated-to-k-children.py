@@ -14,6 +14,8 @@ class Solution:
 
             for c in candies:
                 curr += c//mid
+                if curr>=k:
+                    break
 
             if curr<k:
                 r = mid-1
