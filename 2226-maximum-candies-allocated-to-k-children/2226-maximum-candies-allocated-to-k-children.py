@@ -13,7 +13,7 @@ class Solution:
             curr=0
 
             for c in candies:
-                curr += math.ceil(c//mid)
+                curr += c//mid
 
             if curr<k:
                 r = mid-1
