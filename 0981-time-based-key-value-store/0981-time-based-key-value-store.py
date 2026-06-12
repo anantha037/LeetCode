@@ -29,8 +29,6 @@ class TimeMap:
         
         return arr[l-1][1]
 
-        # return self.obj[key][-1][1]
-
 
 # Your TimeMap object will be instantiated and called as such:
 # obj = TimeMap()
