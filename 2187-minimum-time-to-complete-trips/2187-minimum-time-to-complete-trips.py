@@ -1,7 +1,5 @@
 class Solution:
     def minimumTime(self, time: List[int], totalTrips: int) -> int:
-        # if len(time)==1:
-        #     return time[0]
         l=1
         r = max(time)*totalTrips
         
