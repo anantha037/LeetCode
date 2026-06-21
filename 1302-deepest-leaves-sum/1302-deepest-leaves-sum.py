@@ -6,12 +6,12 @@
 #         self.right = right
 class Solution:
     def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
-        q = [root]
+        q = deque([root])
         while q:
             level_sum = 0
 
             for _ in range(len(q)):
-                curr = q.pop(0)
+                curr = q.popleft()
                 level_sum+=curr.val
                 
                 if curr.left:
