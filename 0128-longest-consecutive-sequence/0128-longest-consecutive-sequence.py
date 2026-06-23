@@ -1,23 +1,25 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        if len(nums)==0:
+        if not nums:
             return 0
-        if len(nums)<=1:
+        if len(set(nums)) == 1:
             return 1
+        
+        maxLength = 1
+
         nums = set(nums)
-        visited = set()
-        total = 0
+
         for i in nums:
-            if i not in visited:
+            if i-1 not in nums:
                 curr = 1
-                visited.add(i)
-                temp = i+1
-                while temp in nums:
-                    temp+=1
-                    visited.add(temp)
+                val = i
+                while val+1 in nums:
                     curr+=1
-                total = max(total,curr)
-        return total
+                    val+=1
+                if curr > maxLength:
+                    maxLength = curr
+        
+        return maxLength
 
 
 
