@@ -1,32 +1,45 @@
+class Node:
+    def __init__(self,key,value):
+        self.key = key
+        self.val = value
+        self.prev = self.next = None
+
 class LRUCache:
 
     def __init__(self, capacity: int):
         self.capacity = capacity
         self.table = {}
-        self.length = 0
-        self.least_used = deque()
-
+        self.left, self.right = Node(0,0),Node(0,0)
+        self.left.next, self.right.prev = self.right,self.left
+    
+    def add(self,node):
+        prev = self.right.prev
+        prev.next = node
+        node.prev = prev
+        node.next,self.right.prev = self.right,node
+    def remove(self,node):
+        nxt, prev = node.next, node.prev
+        prev.next,nxt.prev = nxt,prev
     def get(self, key: int) -> int:
-        # print(self.table)
         if key in self.table:
-            self.least_used.append(key)
-        return self.table.get(key,-1)
+            node = self.table[key]
+            self.remove(node)
+            self.add(node)
+            return node.val
+        return -1
 
     def put(self, key: int, value: int) -> None:
-        if key not in self.table:
-            self.length+=1
-        if self.length>self.capacity:
-            # print('hello',self.least_used)
-            c = self.least_used.popleft()
-            while c in self.least_used:
-                # print('hi',self.least_used)
-                c = self.least_used.popleft()
-            # print('hoi',self.least_used)
-            del self.table[c]
-            self.length-=1
-        # print(self.least_used,self.table)
-        self.table[key]=value
-        self.least_used.append(key)
+        if key in self.table:
+            self.remove(self.table[key])
+        self.table[key] = Node(key,value)
+        self.add(self.table[key])
+        
+        if len(self.table)>self.capacity:
+            # print(key,value,self.table)
+            last = self.left.next
+            self.remove(last)
+            del self.table[last.key]
+        
 
 
 # Your LRUCache object will be instantiated and called as such:
