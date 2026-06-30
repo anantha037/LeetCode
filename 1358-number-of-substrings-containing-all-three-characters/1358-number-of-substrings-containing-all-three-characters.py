@@ -1,16 +1,13 @@
 class Solution:
     def numberOfSubstrings(self, s: str) -> int:
         total = 0
-
-        i=0
-        j=1
-        while i<=j and j<=len(s):
-            if len(set(s[i:j]))<3:
-                j+=1
-            else:
-                total += len(s)-j+1
-                i+=1
+        l = 0
+        count = {'a':0,'b':0,'c':0}
+        n = len(s)
+        for r in range(n):
+            count[s[r]] +=1
+            while count['a']>0 and count['b']>0 and count['c']>0:
+                total += n-r
+                count[s[l]]-=1
+                l+=1
         return total
-            
-
-            
