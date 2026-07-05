@@ -1,25 +1,30 @@
 class Solution:
-    def findAndReplacePattern(self, words: list[str], pattern: str) -> list[str]:
-        result =[]
-        for word in words:
-            mapping = {}
-            visited_pattern_chars = set()
-            is_valid = True
-            for ch, p in zip(word, pattern):
-                if ch not in mapping:
-                    if p not in visited_pattern_chars:
-                        mapping[ch] = p
-                        visited_pattern_chars.add(p)
-                    else:
-                        is_valid = False
+    def findAndReplacePattern(self, words: List[str], pattern: str) -> List[str]:
+        count ={}
+        for i in pattern:
+            if i in count:
+                continue
+            else:
+                count[i]=pattern.count(i)
+        res=[]
+        for i in words:
+            current={}
+            for j in i:
+                if j in current:
+                    continue
+                else:
+                    current[j]=i.count(j)
+            for j,k in zip(count.values(),current.values()):
+                if j!=k:
+                    break
+            else:
+                
+                for a,b in zip(count,current):
+                    co_l = [x for x,y in enumerate(pattern) if y == a]
+                    cu_l = [x for x,y in enumerate(i) if y == b]
+                    print(co_l,cu_l)
+                    if co_l !=cu_l:
                         break
                 else:
-                    if mapping[ch] != p:
-                        is_valid = False
-                        break
-                
-            if is_valid:
-                result.append(word)
-
-        return result
-        
+                    res.append(i)
+        return res
