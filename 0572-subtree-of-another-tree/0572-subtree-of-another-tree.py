@@ -12,12 +12,11 @@ class Solution:
             elif not p or not q or p.val!=q.val:
                 return False
             return identical(p.left,q.left) and identical(p.right,q.right)
-        # exist = False
+
         if not root:
             return False
         
-        if root.val == subRoot.val:
-            if identical(root,subRoot):
-                return True
+        if root.val == subRoot.val and identical(root,subRoot):
+            return True
 
         return self.isSubtree(root.left,subRoot) or self.isSubtree(root.right,subRoot)
