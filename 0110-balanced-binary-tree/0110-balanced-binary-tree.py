@@ -14,5 +14,5 @@ class Solution:
 
             if (left[0] and right[0]) and abs(left[1]-right[1])<2:
                 return True,max(left[1],right[1])+1
-            return False,max(left[1],right[1])+1
+            return False,-1
         return height(root)[0]
