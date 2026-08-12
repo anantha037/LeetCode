@@ -38,16 +38,13 @@ class Codec:
             return None
 
         curr = data.split(',')
-        print(curr)
+
         i = 0
         def preorder(arr,i):
             if arr[i]=='N' or i>=len(arr):
                 return None,i
-            print(arr[i],i)
             node = TreeNode(int(arr[i]))
-            print('l',i)
             node.left,i = preorder(arr,i+1)
-            print('r',i)
             node.right,i = preorder(arr,i+1)
             return node,i
         root,i = preorder(curr,i)
