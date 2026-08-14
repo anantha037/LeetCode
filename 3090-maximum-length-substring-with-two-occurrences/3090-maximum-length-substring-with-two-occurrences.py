@@ -17,6 +17,5 @@ class Solution:
             else:
                 curr+=1
                 res = max(res,curr)
-            # print('i:',i,'j:',j,"curr:",curr,'res:',res,'count:',count)
             j+=1
         return res
