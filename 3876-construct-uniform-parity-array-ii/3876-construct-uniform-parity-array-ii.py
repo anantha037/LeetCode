@@ -12,9 +12,5 @@ class Solution:
 
         if even_count==0 or odd_count==0:
             return True
-        elif even_count==odd_count:
-            return odd_min<even_min
-        # elif even_count<odd_count:
-        #     return even_min>odd_min
         else:
             return odd_min<even_min
