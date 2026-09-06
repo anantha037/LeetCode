@@ -9,7 +9,7 @@ class Solution:
         def find_min(curr,min_val=float('inf'),sec_min_val=float('inf')):
             if not curr:
                 return sec_min_val
-            print(curr.val,min_val,sec_min_val)
+
             if curr.val<min_val:
                 sec_min_val = min_val
                 min_val = curr.val
